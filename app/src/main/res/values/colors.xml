@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#b0b0b0</color>
+    <color name="colorPrimaryDark">#8f8f8f</color>
+    <color name="colorAccent">#22c4f5</color>
+    <color name="text_white">#f1f1f1</color>
+    <color name="temp_card_color">#4fc2d5</color>
+    <color name="white_bg">#fff</color>
+    <color name="white_dark_bg">#f0f0f0</color>
+
+    <color name="text_darker">#545454</color>
+    <color name="text_mid_dark">#757575</color>
+    <color name="text_dark">#a7a7a7</color>
+
+    <color name="svg_dark">#a7a7a7</color>
+
+   <!-- dark theme-->
+
+    <color name="colorPrimary_dark">#2b2c36</color>
+    <color name="colorPrimaryDark_dark">#2b2c36</color>
+    <color name="colorAccent_dark">#1cefbd</color>
+    <color name="white">#ededed</color>
+
+</resources>
