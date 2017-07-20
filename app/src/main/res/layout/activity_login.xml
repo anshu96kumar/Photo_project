@@ -1,72 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_centerInParent="true"
     android:background="#795548"
     tools:context="dummy.popdesign.cllg_project.login">
 
 
-    <android.support.v7.widget.CardView
-
-        android:id="@+id/login_card"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="#fff">
+            android:layout_gravity="center"
+            app:mtf_image="@drawable/user_material"
 
+            >
 
-        <RelativeLayout
+            <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+                android:hint="User Name"
+                android:textColor="#333"
+                android:textColorHint="#666"
+                android:textSize="15sp" />
 
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            app:mtf_image="@drawable/lock_material"
+
+            >
 
             <EditText
-                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#fff"
-                android:ems="6"
-                android:hint="Username"
-                android:inputType="textPersonName"
-                android:padding="8dp" />
-
-            <EditText
-                android:id="@+id/fpass"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/name"
-                android:layout_marginTop="8dp"
-                android:background="#fff"
-                android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:padding="8dp" />
+                android:textColor="#333"
+                android:textColorHint="#666"
+                android:textSize="15sp" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
 
 
+    </LinearLayout>
 
-        </RelativeLayout>
-
-
-
-    </android.support.v7.widget.CardView>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fabSize="normal"
-        android:layout_marginRight="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
         android:backgroundTint="#66bb6a"
         android:src="@drawable/next"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"/>
+        app:fabSize="normal" />
 
 </RelativeLayout>
