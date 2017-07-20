@@ -25,7 +25,10 @@
             android:name=".signup_login"
             android:theme="@style/signup" />
         <activity android:name=".Image" />
-        <activity android:name=".login" android:theme="@style/login"></activity>
+        <activity
+            android:name=".login"
+            android:theme="@style/login" />
+        <activity android:name=".upload_photo" android:theme="@style/upload_photo"></activity>
     </application>
 
 </manifest>

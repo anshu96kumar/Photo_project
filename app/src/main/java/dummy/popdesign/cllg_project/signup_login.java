@@ -42,7 +42,7 @@ public class signup_login extends AppCompatActivity {
         cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(signup_login.this, login.class));
+                startActivity(new Intent(signup_login.this, upload_photo.class));
             }
         });
 

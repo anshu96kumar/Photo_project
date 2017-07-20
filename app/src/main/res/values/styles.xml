@@ -35,4 +35,12 @@
         <item name="colorPrimaryDark">#563d33</item>
         <item name="colorAccent">#66bb6a</item>
     </style>
+    
+    <!---->
+    <style name="upload_photo" parent="Theme.AppCompat.Light.NoActionBar">
+         <item name="android:windowTranslucentStatus">true</item>
+
+        <item name="colorPrimary">#e91e63</item>
+        <item name="colorPrimaryDark">#af3168</item>
+    </style>
 </resources>
