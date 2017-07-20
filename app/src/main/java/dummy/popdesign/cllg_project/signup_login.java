@@ -76,13 +76,18 @@ public class signup_login extends AppCompatActivity {
                         secondpass = conf_pass.getText().toString();
 
 
+                if (firstpass.indexOf('@') == -1) {
+                    Snackbar.make(context_cpass, "Password should have a special character", Snackbar.LENGTH_LONG).show();
+                }
+
                 if (firstpass.equals(secondpass)) {
+
                     flag = true;
                 } else {
                     Snackbar.make(context_cpass, "Password does't match", Snackbar.LENGTH_LONG).show();
                 }
 
-                if (flag != false) {
+                if (flag) {
                     Toast.makeText(signup_login.this, "User is Registered", Toast.LENGTH_LONG).show();
                 }
             }
