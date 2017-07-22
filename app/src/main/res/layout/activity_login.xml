@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
                 android:hint="User Name"
+                android:id="@+id/login_email"
                 android:textColor="#333"
                 android:textColorHint="#666"
                 android:textSize="15sp" />
@@ -49,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
+                android:id="@+id/login_pass"
                 android:inputType="textPassword"
                 android:textColor="#333"
                 android:textColorHint="#666"
@@ -67,8 +69,33 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:backgroundTint="#66bb6a"
+        android:id="@+id/login"
+        app:backgroundTint="#66bb6a"
         android:src="@drawable/next"
         app:fabSize="normal" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#20ffffff"
+        app:cardElevation="0dp">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+
+            android:layout_marginTop="16dp"
+            android:text="New User? Register"
+            android:textColor="#ffffff" />
+
+    </android.support.v7.widget.CardView>
+
+
 
 </RelativeLayout>
