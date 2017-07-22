@@ -19,14 +19,14 @@
             android:name=".splash_screen"
             android:theme="@style/splash_screen" />
         <activity
-            android:name=".signup_login"
-            android:theme="@style/signup">
+            android:name=".login"
+            android:theme="@style/login">
 
         </activity>
         <activity android:name=".Image" />
         <activity
-            android:name=".login"
-            android:theme="@style/login">
+            android:name=".signup_login"
+            android:theme="@style/signup">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

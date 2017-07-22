@@ -1,10 +1,9 @@
 package dummy.popdesign.cllg_project;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -48,8 +47,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
      email= (EditText) findViewById(R.id.login_email);
      pass= (EditText) findViewById(R.id.login_pass);
     fab= (FloatingActionButton) findViewById(R.id.login);
-      cv= (CardView) findViewById(R.id.register);
-    cv.setOnClickListener(this);//to call Onclick method
+
         fab.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -154,9 +152,6 @@ int id=view.getId();
             signIn(email.getText().toString(),pass.getText().toString());
         }
 
-        else if(id==R.id.register)
-        {
-            startActivity(new Intent(login.this, signup_login.class));
-        }
+
     }
 }

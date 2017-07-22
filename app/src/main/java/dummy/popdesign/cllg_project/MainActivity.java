@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -108,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
        iv = (ImageView) findViewById(R.id.photo);
 
-        //** for setting title in the middle**//*
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -122,9 +120,11 @@ public class MainActivity extends AppCompatActivity {
                         Gravity.CENTER
                 )
         );
+        /*
         TextView tv=v.findViewById(R.id.home_title);
         tv.setText(username);
 
+*/
        /* iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
