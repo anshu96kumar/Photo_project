@@ -14,14 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.gjiazhe.panoramaimageview.PanoramaImageView
+        <ImageView
 
             android:layout_width="match_parent"
             android:layout_height="300dp"
-
-            app:piv_enablePanoramaMode="true"
-            app:piv_show_scrollbar="true"
-            app:piv_invertScrollDirection="false"
             android:id="@+id/photo"
             android:layout_below="@+id/description"
             android:scaleType="centerCrop"
