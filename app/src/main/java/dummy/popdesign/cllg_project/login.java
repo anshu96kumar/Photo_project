@@ -30,6 +30,8 @@ public class login extends BaseActivity implements  View.OnClickListener {
     private FloatingActionButton fab ;
 
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -151,7 +153,5 @@ int id=view.getId();
         {
             signIn(email.getText().toString(),pass.getText().toString());
         }
-
-
     }
 }

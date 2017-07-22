@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,20 +21,33 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
 
+
 public class MainActivity extends AppCompatActivity {
+
+    FloatingActionButton fab;
 
     private static final String TAG ="Mainactivity" ;
     private RecyclerView recyclerView;
+
+
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String username;
     //firebase
     FirebaseUser currentUser;
+
+
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+        System.exit(0);
+    }
 
     @Override
     public void onStart() {
@@ -53,6 +67,17 @@ public class MainActivity extends AppCompatActivity {
 
   username=currentUser.getEmail();
 
+
+           fab = (FloatingActionButton) findViewById(R.id.fab);
+          fab.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  startActivity(new Intent(MainActivity.this , upload_photo.class));
+              }
+          });
+
+
+
         ///////firebase-------
         ImageView iv;
        MainAdapter mainAdapter=new MainAdapter(getApplicationContext());
@@ -70,8 +95,13 @@ public class MainActivity extends AppCompatActivity {
         mainAdapter.setData(list);
 
 
+//Floating Action bar
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToRecyclerView(recyclerView);
 
 //firebase
+        final View contextView = findViewById(R.id.fab);
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
 
@@ -80,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                     username = user.getEmail().toString();
-                    Toast.makeText(MainActivity.this, user.getEmail(), Toast.LENGTH_SHORT).show();
+                    username = user.getEmail().toString();
+                    Snackbar.make(contextView,"Welcome "  +user.getEmail(),Snackbar.LENGTH_LONG).show();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
 
                 } else {
@@ -102,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final View contextView = findViewById(R.id.photo);
+
 
        iv = (ImageView) findViewById(R.id.photo);
 
@@ -153,4 +183,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }
