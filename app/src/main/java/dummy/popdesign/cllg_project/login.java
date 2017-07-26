@@ -154,4 +154,10 @@ int id=view.getId();
             signIn(email.getText().toString(),pass.getText().toString());
         }
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }
