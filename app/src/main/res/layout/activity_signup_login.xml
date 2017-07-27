@@ -59,22 +59,13 @@
                     android:inputType="textEmailAddress"
                     android:padding="8dp" />
 
-                <EditText
-                    android:id="@+id/user_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:ems="10"
-                    android:hint="User Name"
-                    android:inputType="textPassword"
-                    android:padding="8dp"
-                    />
+
 
                 <EditText
                     android:id="@+id/fpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/user_id"
+
                     android:layout_marginTop="8dp"
                     android:background="#fff"
                     android:ems="10"
