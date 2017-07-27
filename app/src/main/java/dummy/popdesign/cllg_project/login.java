@@ -36,6 +36,8 @@ public class login extends BaseActivity implements  View.OnClickListener {
     private DatabaseReference mDatabase;
 
 
+
+
     @Override
     public void onStart() {
         super.onStart();
@@ -192,7 +194,11 @@ int id=view.getId();
         {
             signIn(email.getText().toString(),pass.getText().toString());
         }
+    }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 }

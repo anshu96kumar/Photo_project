@@ -16,14 +16,12 @@
 
         <ImageView
 
-            android:id="@+id/photo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:id="@+id/photo"
             android:layout_below="@+id/description"
             android:scaleType="centerCrop"
-            android:src="@drawable/female"
-
-            />
+            android:src="@drawable/female" />
 
         <ImageView
 

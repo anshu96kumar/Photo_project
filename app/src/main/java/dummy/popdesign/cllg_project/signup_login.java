@@ -192,5 +192,9 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
 
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }
