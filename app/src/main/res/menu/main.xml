@@ -2,12 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
     <item
-        android:id="@+id/search"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title=""
+        android:id="@+id/add_post"
+        android:icon="@drawable/ic_add_black_24dp"
+        android:title="Add_Post"
         app:showAsAction="always"
         />
+
+
+
+    <item
+        android:id="@+id/log_out"
+
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Log Out"
+        app:showAsAction="never"
+        />
+
 
 
 </menu>

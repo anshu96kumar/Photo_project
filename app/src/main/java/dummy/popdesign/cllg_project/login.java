@@ -16,6 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login extends BaseActivity implements  View.OnClickListener {
     private static final String TAG ="login" ;
@@ -28,6 +33,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
     //firebase
 
     private FloatingActionButton fab ;
+    private DatabaseReference mDatabase;
 
 
     @Override
@@ -50,6 +56,8 @@ public class login extends BaseActivity implements  View.OnClickListener {
 
         fab.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Users");
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
 
             @Override
@@ -57,6 +65,8 @@ public class login extends BaseActivity implements  View.OnClickListener {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
+
+                    startActivity(new Intent(login.this,MainActivity.class));
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -94,6 +104,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
                             Log.d(TAG, "signInWithEmail:success");
                             //FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
+                            checkUserExist();
                             startActivity(new Intent(login.this, MainActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
@@ -113,6 +124,36 @@ public class login extends BaseActivity implements  View.OnClickListener {
                 });
         // [END sign_in_with_email]
     }
+
+    private void checkUserExist() {
+
+    final String user_id=mAuth.getCurrentUser().getUid();
+
+
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(user_id))
+                {
+                    startActivity(new Intent(login.this,MainActivity.class));
+                }
+                else
+                {
+                    Toast.makeText(login.this, "You need to set up your account ", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
 
     private void loginfailed() {
 

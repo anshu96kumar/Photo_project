@@ -16,17 +16,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class signup_login extends BaseActivity implements  View.OnClickListener{
 
     FloatingActionButton fab, add_user;
     CardView  upload_photo,cv;
-    EditText email, pass, conf_pass;
+    EditText email, pass, conf_pass,name;
     public final String TAG =signup_login.class.getName() ;
 
     //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
+
    //firebase
 
 
@@ -46,17 +51,18 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
         setContentView(R.layout.activity_signup_login);
 
 
-        final View context_name = findViewById(R.id.name);
+      /*  final View context_name = findViewById(R.id.name);
         final View context_pass = findViewById(R.id.fpass);
         final View context_cpass = findViewById(R.id.cpass);
         final View context_upload_photo = findViewById(R.id.upload_photo);
-
+*/
 
         cv = (CardView) findViewById(R.id.already_user);
 
         fab = (FloatingActionButton) findViewById(R.id.add_user);
           fab.setOnClickListener(this);
 
+        name= (EditText) findViewById(R.id.user_id);
         email = (EditText) findViewById(R.id.name);
         pass = (EditText) findViewById(R.id.fpass);
         conf_pass = (EditText) findViewById(R.id.cpass);
@@ -76,6 +82,7 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
 
         //firebase
         mAuth = FirebaseAuth.getInstance();
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Users");
         mAuthListener = new FirebaseAuth.AuthStateListener() {
 
             @Override
@@ -110,7 +117,7 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
 
 
 
-    private void createAccount(String email, String password) {
+    private void createAccount(String email, String password, final String name) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -127,6 +134,12 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            String user_id=user.getUid();
+                            DatabaseReference currentUser_db=mDatabase.child(user_id);
+                            currentUser_db.child("name").setValue(name);
+                            currentUser_db.child("photo").setValue("photo.jpg");
+
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -173,7 +186,7 @@ public class signup_login extends BaseActivity implements  View.OnClickListener{
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.add_user) {
-            createAccount(email.getText().toString(), pass.getText().toString());
+            createAccount(email.getText().toString().trim(), pass.getText().toString().trim(),name.getText().toString().trim());
         }
 
 

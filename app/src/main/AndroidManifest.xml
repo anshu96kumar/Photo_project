@@ -33,7 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".upload_photo" android:theme="@style/upload_photo"></activity>
+        <activity android:name=".upload_photo" android:theme="@style/upload_photo">
+
+        </activity>
     </application>
 
 </manifest>

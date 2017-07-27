@@ -16,10 +16,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private String username;
     //firebase
     FirebaseUser currentUser;
+    DatabaseReference mDatabase;
 
     @Override
     public void onStart() {
@@ -41,8 +48,65 @@ public class MainActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         currentUser = mAuth.getCurrentUser();
         mAuth.addAuthStateListener(mAuthListener);
+
+        mDatabase= FirebaseDatabase.getInstance().getReference().child("Blog");
         //updateUI(currentUser);
+
+        FirebaseRecyclerAdapter<Info_for_Main,BlogViewHolder> firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Info_for_Main, BlogViewHolder>(
+
+
+                Info_for_Main.class,
+                R.layout.recyclerview,
+                BlogViewHolder.class,
+                mDatabase
+        ) {
+            @Override
+            protected void populateViewHolder(BlogViewHolder viewHolder, Info_for_Main model, int position) {
+
+                viewHolder.setUid(model.getUid());
+                viewHolder.setDescription(model.getDescription());
+                viewHolder.setPhoto(getApplicationContext(),model.getPhoto());
+
+            }
+        };
+
+        recyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
+
+
+    public static class BlogViewHolder extends RecyclerView.ViewHolder{
+
+        View mView;
+
+        public BlogViewHolder(View itemView) {
+            super(itemView);
+           mView=itemView;
+        }
+
+        public void setDescription(String desc)
+        {
+            TextView description=mView.findViewById(R.id.description);
+            description.setText(desc);
+        }
+
+        public void setUid(String userid)
+        {
+            TextView uid=mView.findViewById(R.id.name);
+            uid.setText(userid);
+
+        }
+
+        public void setPhoto(Context ctx,String image)
+        {
+            ImageView imageView=mView.findViewById(R.id.photo);
+            Picasso.with(ctx).load(image).into(imageView);
+
+        }
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +114,17 @@ public class MainActivity extends AppCompatActivity {
 //getting current user email
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-
-  username=currentUser.getEmail();
+        username=currentUser.getEmail();
 
         ///////firebase-------
         ImageView iv;
-       MainAdapter mainAdapter=new MainAdapter(getApplicationContext());
+      // MainAdapter mainAdapter=new MainAdapter(getApplicationContext());
         recyclerView= (RecyclerView) findViewById(R.id.rv);
+        recyclerView.setHasFixedSize(true);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setAdapter(mainAdapter);
-        ArrayList<Info_for_Main> list=new ArrayList<>();
+        //recyclerView.setAdapter(mainAdapter);
+       /* ArrayList<Info_for_Main> list=new ArrayList<>();
         list.add(new Info_for_Main("akash","7 days","descjhedjkjk","100"));
         list.add(new Info_for_Main("sdash","7 days","descjsdhedjkjk","100"));
 
@@ -67,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         list.add(new Info_for_Main("asdskash","7 days","descjhedjkjk","100"));
 
-        mainAdapter.setData(list);
+        mainAdapter.setData(list);*/
 
 
 
@@ -148,8 +213,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.search) {
+        if (item.getItemId() == R.id.log_out) {
+            mAuth.signOut();
             startActivity(new Intent(this, signup_login.class));
+        }
+
+        if(item.getItemId()==R.id.add_post)
+        {
+            startActivity(new Intent(this,upload_photo.class));
         }
         return super.onOptionsItemSelected(item);
     }

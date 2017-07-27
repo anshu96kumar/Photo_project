@@ -8,14 +8,40 @@ public class Info_for_Main {
     String urlphoto;
     String name;
     String date;
-    String description;
 
-    public Info_for_Main(String name, String date, String description, String likes) {
+    public Info_for_Main()
+    {}
+    public Info_for_Main(String urlphoto, String name, String date, String description, String uid, String photo, String likes, String urldp) {
+        this.urlphoto = urlphoto;
         this.name = name;
         this.date = date;
         this.description = description;
+        this.uid = uid;
+        this.photo = photo;
         this.likes = likes;
+        this.urldp = urldp;
     }
+
+    String description;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    String uid;
+    String photo;
 
     String likes;
     String urldp;
