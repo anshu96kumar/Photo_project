@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dummy.popdesign.cllg_project.Profile">
+
+<LinearLayout
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/counts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/user_pic_profile"
+        android:layout_width="144dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:src="@drawable/about_abhi">
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/user_name_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abhishek kumar"
+        android:fontFamily="monospace"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"/>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Posts"
+            android:layout_below="@+id/header"/>
+
+
+
+    </RelativeLayout>
+</LinearLayout>
+
+
+
+</RelativeLayout>

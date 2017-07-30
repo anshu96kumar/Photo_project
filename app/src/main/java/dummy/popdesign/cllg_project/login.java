@@ -68,7 +68,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
                 if (user != null) {
                     // User is signed in
 
-                    startActivity(new Intent(login.this,MainActivity.class));
+                    startActivity(new Intent(login.this,NavigationActivity.class));
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -138,7 +138,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(user_id))
                 {
-                    startActivity(new Intent(login.this,MainActivity.class));
+                    startActivity(new Intent(login.this,NavigationActivity.class));
                 }
                 else
                 {

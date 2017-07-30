@@ -68,10 +68,11 @@ public class MainAdapter extends Adapter<MainAdapter.MyViewHolder> {
     TextView name,date,description,likes;
         public MyViewHolder(View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.name);
-            description=itemView.findViewById(R.id.description);
-           date=itemView.findViewById(R.id.time);
-            likes=itemView.findViewById(R.id.count_fav);
+
+            name= (TextView) itemView.findViewById(R.id.name);
+            description= (TextView) itemView.findViewById(R.id.description);
+           date= (TextView) itemView.findViewById(R.id.time);
+            likes= (TextView) itemView.findViewById(R.id.count_fav);
 
         }
     }

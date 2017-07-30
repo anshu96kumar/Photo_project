@@ -24,7 +24,7 @@
 
     <!--Login-->
     <style name="signup" parent="Theme.AppCompat.Light.NoActionBar">
-         <item name="colorPrimary">#e91e63</item>
+        <item name="colorPrimary">#e91e63</item>
         <item name="colorPrimaryDark">#af3168</item>
         <item name="colorAccent">#fff711</item>
     </style>
@@ -35,12 +35,21 @@
         <item name="colorPrimaryDark">#563d33</item>
         <item name="colorAccent">#66bb6a</item>
     </style>
-    
+
     <!---->
     <style name="upload_photo" parent="Theme.AppCompat.Light.NoActionBar">
-         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
 
         <item name="colorPrimary">#e91e63</item>
         <item name="colorPrimaryDark">#af3168</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

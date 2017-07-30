@@ -20,14 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -86,20 +83,21 @@ public class MainActivity extends AppCompatActivity {
 
         public void setDescription(String desc)
         {
-            TextView description=mView.findViewById(R.id.description);
+            TextView description= (TextView) mView.findViewById(R.id.description);
             description.setText(desc);
         }
 
         public void setUid(String userid)
         {
-            TextView uid=mView.findViewById(R.id.name);
+            TextView uid= (TextView) mView.findViewById(R.id.name);
             uid.setText(userid);
 
         }
 
         public void setPhoto(Context ctx,String image)
         {
-            ImageView imageView=mView.findViewById(R.id.photo);
+            ImageView imageView= (ImageView) mView.findViewById(R.id.photo);
+
             Picasso.with(ctx).load(image).into(imageView);
 
         }

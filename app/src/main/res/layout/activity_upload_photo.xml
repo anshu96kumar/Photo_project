@@ -65,7 +65,7 @@
         android:id="@+id/Upload_database"
         app:layout_anchorGravity="bottom|right|end"
         android:layout_marginRight="16dp"
-        android:src="@drawable/fab"
+        android:src="@drawable/fab_addpic"
         app:backgroundTint="#29f4cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
