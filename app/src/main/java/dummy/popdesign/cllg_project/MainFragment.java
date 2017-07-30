@@ -44,7 +44,18 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
+
+
         View view = inflater.inflate(R.layout.activity_main, null, false);
+
+
+
+
+
+
+
+
+
 
         //getting current user email
         mAuth = FirebaseAuth.getInstance();
