@@ -1,53 +1,121 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dummy.popdesign.cllg_project.Profile">
 
-<LinearLayout
-    android:id="@+id/header"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:id="@+id/counts"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/user_pic_profile"
+        android:id="@+id/user_photo_profile"
         android:layout_width="144dp"
         android:layout_height="144dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:src="@drawable/about_abhi">
-    </de.hdodenhof.circleimageview.CircleImageView>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/about_abhi" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/edit_profile"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:backgroundTint="@color/colorPrimary_dark"
+        android:src="@drawable/add_fab"
+        android:tint="#afb0b9"
+        app:fabSize="mini"
+        android:layout_above="@+id/user_name_profile"
+        android:layout_alignEnd="@+id/user_photo_profile" />
 
     <TextView
         android:id="@+id/user_name_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Abhishek kumar"
+        android:layout_below="@+id/user_photo_profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="monospace"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:textSize="24sp"/>
+        android:text="Abhishek"
+        android:textColor="#777"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_name_profile"
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:elevation="2dp"
+        app:cardCornerRadius="4dp">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Posts"
-            android:layout_below="@+id/header"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/user_uploaded_photo"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/female" />
 
 
+            <ImageView
+                android:id="@+id/fav_profile"
+                android:layout_below="@+id/user_uploaded_photo"
+                android:src="@drawable/heart"
+                android:tint="#c3c2c2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginLeft="72dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"/>
 
-    </RelativeLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/fav_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="777"
+                android:fontFamily="monospace"
+                android:textColor="#c3c3c3"
+                android:textSize="16sp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="2dp"
+                android:layout_alignTop="@+id/fav_profile"
+                android:layout_toEndOf="@+id/fav_profile" />
 
+
+            <ImageView
+                android:id="@+id/download_profile"
+                android:layout_below="@+id/user_uploaded_photo"
+                android:src="@drawable/download_material_bold"
+                android:tint="#c3c2c2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginRight="72dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                 />
+
+            <ImageView
+                android:id="@+id/share_profile"
+                android:layout_below="@+id/user_uploaded_photo"
+                android:src="@drawable/share_material"
+                android:tint="#c3c2c2"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>
