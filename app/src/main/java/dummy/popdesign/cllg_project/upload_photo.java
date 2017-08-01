@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +31,8 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class upload_photo extends AppCompatActivity {
 
@@ -48,6 +51,8 @@ ImageView im;
 
     private String user_id;
 
+    SimpleDateFormat simpleDateFormat ;
+    String format ;
 
  private static final int GALLERY_REQUEST=1;
     private String username;
@@ -65,7 +70,7 @@ ImageView im;
 
         username=currentUser.getEmail();
         mStorageRef = FirebaseStorage.getInstance().getReference();
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Blog");
+        mDatabase= FirebaseDatabase.getInstance().getReference();
         mDatabase_user=FirebaseDatabase.getInstance().getReference().child("Users");
 
 //firebase end
@@ -126,14 +131,26 @@ ImageView im;
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // Get a URL to the uploaded content
                             @SuppressWarnings("VisibleForTests")   Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                            DatabaseReference newPost=mDatabase.push();
-                            newPost.child("uid").setValue(user_id);
-
+                            //getting current time
+                            simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss") ;
+                            format= simpleDateFormat.format(new Date());
+                            //adding photo to blog database table .
+                            DatabaseReference newPost=mDatabase.child("Blog").push();
+                            String key=newPost.getKey();
+                            Info_for_Main Post=new Info_for_Main(user_id,description,downloadUrl.toString(),0,key,format);
+                           /* newPost.child("uid").setValue(user_id);
                             newPost.child("description").setValue(description);
                             newPost.child("photo").setValue(downloadUrl.toString());
+                            newPost.child("likes").setValue(0);*/
+                            newPost.setValue(Post);
+                            //adding photo to users table
+                            DatabaseReference addtoUser=mDatabase.child("Users").child(currentUser.getUid()).child("Uploads").child(key);
+                            addtoUser.child("Photo").setValue(downloadUrl.toString());
+
+
                             Toast.makeText(upload_photo.this, "Successful", Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(upload_photo.this,MainActivity.class));
+                            startActivity(new Intent(upload_photo.this,NavigationActivity.class));
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

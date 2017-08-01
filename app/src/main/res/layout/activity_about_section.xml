@@ -45,14 +45,14 @@
                 android:layout_weight="0.74"
 
                 android:scaleType="center"
-                android:src="@drawable/about_abhi_banner" />
+                android:src="@drawable/about_account" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="-55dp"
-                android:src="@drawable/about_abhi"
+                android:src="@drawable/about_account"
                 android:elevation="6dp"/>
 
             <TextView
@@ -100,7 +100,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/about_mail" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_git"
@@ -110,7 +110,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_mail"
-                    android:src="@drawable/about_git" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_fb"
@@ -120,7 +120,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_git"
-                    android:src="@drawable/about_fb" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_insta"
@@ -130,7 +130,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_fb"
-                    android:src="@drawable/about_insta" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_play_store"
@@ -140,7 +140,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_insta"
-                    android:src="@drawable/about_playstore" />
+                    android:src="@drawable/about_account" />
                 <ImageView
                     android:id="@+id/about_google_plus"
                     android:layout_width="24dp"
@@ -149,7 +149,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_play_store"
-                    android:src="@drawable/about_google_plus" />
+                    android:src="@drawable/about_account" />
 
             </RelativeLayout>
 
@@ -193,14 +193,14 @@
                 android:layout_weight="0.74"
 
                 android:scaleType="center"
-                android:src="@drawable/about_negi_banner" />
+                android:src="@drawable/about_account" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="-55dp"
-                android:src="@drawable/about_negi"
+                android:src="@drawable/about_account"
                 android:elevation="4dp"/>
 
             <TextView
@@ -246,7 +246,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/about_mail" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_git_negi"
@@ -256,7 +256,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_mail_negi"
-                    android:src="@drawable/about_git" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_fb_negi"
@@ -266,7 +266,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_git_negi"
-                    android:src="@drawable/about_fb" />
+                    android:src="@drawable/about_account" />
 
                 <ImageView
                     android:id="@+id/about_insta_negi"
@@ -276,7 +276,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_toLeftOf="@+id/about_fb_negi"
-                    android:src="@drawable/about_insta" />
+                    android:src="@drawable/about_account" />
 
             </RelativeLayout>
 

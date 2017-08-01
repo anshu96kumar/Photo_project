@@ -17,11 +17,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.github.curioustechizen.ago.RelativeTimeTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainFragment extends Fragment {
@@ -46,7 +55,7 @@ public class MainFragment extends Fragment {
 
 
 
-        View view = inflater.inflate(R.layout.activity_main, null, false);
+        final View view = inflater.inflate(R.layout.activity_main, null, false);
 
 
 
@@ -187,12 +196,26 @@ public class MainFragment extends Fragment {
                 mDatabase
         ) {
             @Override
-            protected void populateViewHolder(BlogViewHolder viewHolder, Info_for_Main model, int position) {
+            protected void populateViewHolder(final BlogViewHolder viewHolder, final Info_for_Main model, final int position) {
 
                 viewHolder.setUid(model.getUid());
                 viewHolder.setDescription(model.getDescription());
                 viewHolder.setPhoto(getActivity().getApplicationContext(), model.getPhoto());
+                viewHolder.setLikes(model.getLikes());
+                try {
+                    viewHolder.setTime(model.getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                //increment likes on clicking fav button
+               // final String likescount =model.getLikes();
+                viewHolder.fav.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                      onStarClicked(mDatabase.child(model.getKey()));
 
+                    }
+                });
             }
         };
 
@@ -202,15 +225,53 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    private void onStarClicked(DatabaseReference postRef) {
+        postRef.runTransaction(new Transaction.Handler() {
+            @Override
+            public Transaction.Result doTransaction(MutableData mutableData) {
+                Info_for_Main p = mutableData.getValue(Info_for_Main.class);
+
+                if (p == null) {
+                    return Transaction.success(mutableData);
+                }
+
+                if (p.getLikedBy().containsKey(currentUser.getUid())) {
+                    // Unstar the post and remove self from stars
+                    p.setLikes(p.getLikes() - 1);
+                    p.getLikedBy().remove(currentUser.getUid());
+                } else {
+                    // Star the post and add self to stars
+                    p.setLikes(p.getLikes() + 1);
+                    p.getLikedBy().put(currentUser.getUid(), true);
+                }
+
+                // Set value and report transaction success
+                mutableData.setValue(p);
+                return Transaction.success(mutableData);
+            }
+
+            @Override
+            public void onComplete(DatabaseError databaseError, boolean b,
+                                   DataSnapshot dataSnapshot) {
+                // Transaction completed
+                Log.d(TAG, "postTransaction:onComplete:" + databaseError);
+            }
+        });
+    }
 
     public static class BlogViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
+        ImageView fav;
 
         public BlogViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+            fav= (ImageView) mView.findViewById(R.id.fav);
+
         }
+
+
 
         public void setDescription(String desc) {
             TextView description = (TextView) mView.findViewById(R.id.description);
@@ -231,6 +292,17 @@ public class MainFragment extends Fragment {
         }
 
 
+        public void setLikes(int likes) {
+            TextView textView= (TextView) mView.findViewById(R.id.count_fav);
+            textView.setText(""+likes);
+        }
+
+        public void setTime(String time) throws ParseException {
+            RelativeTimeTextView v = (RelativeTimeTextView)mView.findViewById(R.id.time);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+            Date dateObj= sdf.parse(time);
+            v.setReferenceTime(dateObj.getTime());
+        }
     }
 
 

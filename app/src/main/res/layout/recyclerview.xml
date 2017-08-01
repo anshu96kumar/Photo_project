@@ -47,16 +47,17 @@
             android:layout_alignTop="@+id/user_photo"
             android:layout_toEndOf="@+id/user_photo" />
 
-        <TextView
+        <com.github.curioustechizen.ago.RelativeTimeTextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_dark"
-            android:text="2 days ago"
+            app:relative_time_prefix=""
             android:fontFamily="monospace"
             android:textSize="12sp"
             android:layout_below="@+id/menu"
-            android:layout_alignStart="@+id/name" />
+            android:layout_alignStart="@+id/name"/>
+
 
 
         <TextView

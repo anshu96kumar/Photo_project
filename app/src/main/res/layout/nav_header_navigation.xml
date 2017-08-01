@@ -11,7 +11,7 @@
         android:layout_height="92dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="16dp"
-        android:src="@drawable/about_abhi"
+        android:src="@drawable/about_account"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
 

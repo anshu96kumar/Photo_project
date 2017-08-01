@@ -11,14 +11,14 @@
         android:layout_height="144dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:src="@drawable/about_abhi" />
+        android:src="@drawable/about_account" />
 
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/edit_profile"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:backgroundTint="@color/colorPrimary_dark"
+        app:backgroundTint="@color/colorPrimary_dark"
         android:src="@drawable/add_fab"
         android:tint="#afb0b9"
         app:fabSize="mini"

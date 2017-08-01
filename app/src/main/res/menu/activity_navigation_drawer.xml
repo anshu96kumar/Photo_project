@@ -20,11 +20,11 @@
             android:title="FAQs" />
         <item
             android:id="@+id/about_nav"
-            android:icon="@drawable/about_about"
+            android:icon="@drawable/about_account"
             android:title="About the app" />
         <item
             android:id="@+id/sign_out_nav"
-            android:icon="@drawable/about_logout"
+            android:icon="@drawable/about_account"
             android:title="Sign Out" />
     </group>
 
