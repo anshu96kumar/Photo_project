@@ -34,15 +34,14 @@ public class login extends BaseActivity implements  View.OnClickListener {
 
     private FloatingActionButton fab ;
     private DatabaseReference mDatabase;
-
-
+    private FirebaseUser currentUser;
 
 
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+
         mAuth.addAuthStateListener(mAuthListener);
         //updateUI(currentUser);
     }
@@ -68,8 +67,10 @@ public class login extends BaseActivity implements  View.OnClickListener {
                 if (user != null) {
                     // User is signed in
 
-                    startActivity(new Intent(login.this,NavigationActivity.class));
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
+                    checkUserExist();
+
+
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -107,7 +108,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
                             //FirebaseUser user = mAuth.getCurrentUser();
                             //updateUI(user);
                             checkUserExist();
-                            startActivity(new Intent(login.this, MainActivity.class));
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -142,7 +143,7 @@ public class login extends BaseActivity implements  View.OnClickListener {
                 }
                 else
                 {
-                    Toast.makeText(login.this, "You need to set up your account ", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(login.this, "You need to set up your account ", Toast.LENGTH_SHORT).show();
 
                 }
             }

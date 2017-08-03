@@ -2,6 +2,7 @@ package dummy.popdesign.cllg_project;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,8 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +92,9 @@ public class NavigationActivity extends AppCompatActivity
         } else if (id == R.id.fav_nav) {
 
         } else if (id == R.id.sign_out_nav) {
-
+            mAuth=FirebaseAuth.getInstance();
+            mAuth.signOut();
+            startActivity(new Intent(this, signup_login.class));
 
 
         } else if (id == R.id.faq_nav) {
